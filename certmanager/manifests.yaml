@@ -5,6 +5,8 @@ kind: ServiceAccount
 automountServiceAccountToken: true
 metadata:
   name: my-cert-manager-cainjector
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   namespace: cert-manager
   labels:
     app: cainjector
@@ -21,6 +23,8 @@ kind: ServiceAccount
 automountServiceAccountToken: true
 metadata:
   name: my-cert-manager
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   namespace: cert-manager
   labels:
     app: cert-manager
@@ -37,6 +41,8 @@ kind: ServiceAccount
 automountServiceAccountToken: true
 metadata:
   name: my-cert-manager-webhook
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   namespace: cert-manager
   labels:
     app: webhook
@@ -52,6 +58,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: my-cert-manager-cainjector
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   labels:
     app: cainjector
     app.kubernetes.io/name: cainjector
@@ -86,6 +94,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: my-cert-manager-controller-issuers
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   labels:
     app: cert-manager
     app.kubernetes.io/name: cert-manager
@@ -114,6 +124,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: my-cert-manager-controller-clusterissuers
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   labels:
     app: cert-manager
     app.kubernetes.io/name: cert-manager
@@ -142,6 +154,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: my-cert-manager-controller-certificates
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   labels:
     app: cert-manager
     app.kubernetes.io/name: cert-manager
@@ -179,6 +193,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: my-cert-manager-controller-orders
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   labels:
     app: cert-manager
     app.kubernetes.io/name: cert-manager
@@ -219,6 +235,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: my-cert-manager-controller-challenges
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   labels:
     app: cert-manager
     app.kubernetes.io/name: cert-manager
@@ -281,6 +299,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: my-cert-manager-controller-ingress-shim
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   labels:
     app: cert-manager
     app.kubernetes.io/name: cert-manager
@@ -320,6 +340,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: my-cert-manager-cluster-view
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   labels:
     app: cert-manager
     app.kubernetes.io/name: cert-manager
@@ -339,6 +361,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: my-cert-manager-view
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   labels:
     app: cert-manager
     app.kubernetes.io/name: cert-manager
@@ -364,6 +388,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: my-cert-manager-edit
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   labels:
     app: cert-manager
     app.kubernetes.io/name: cert-manager
@@ -391,6 +417,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: my-cert-manager-controller-approve:cert-manager-io
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   labels:
     app: cert-manager
     app.kubernetes.io/name: cert-manager
@@ -413,6 +441,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: my-cert-manager-controller-certificatesigningrequests
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   labels:
     app: cert-manager
     app.kubernetes.io/name: cert-manager
@@ -441,6 +471,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: my-cert-manager-webhook:subjectaccessreviews
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   labels:
     app: webhook
     app.kubernetes.io/name: webhook
@@ -459,6 +491,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: my-cert-manager-cainjector
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   labels:
     app: cainjector
     app.kubernetes.io/name: cainjector
@@ -481,6 +515,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: my-cert-manager-controller-issuers
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   labels:
     app: cert-manager
     app.kubernetes.io/name: cert-manager
@@ -503,6 +539,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: my-cert-manager-controller-clusterissuers
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   labels:
     app: cert-manager
     app.kubernetes.io/name: cert-manager
@@ -515,6 +553,8 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: my-cert-manager-controller-clusterissuers
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 subjects:
   - name: my-cert-manager
     namespace: cert-manager
