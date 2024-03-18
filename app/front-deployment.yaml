@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: my-container
-        image: oyinlola101/frontend:latest
+        image: oyinlola101/frontend:1
         ports:
         - containerPort: 80
 

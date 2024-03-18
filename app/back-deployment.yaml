@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: my-container
-        image: oyinlola101/backend:latest
+        image: oyinlola101/backend:1
         ports:
         - containerPort: 5000
 
