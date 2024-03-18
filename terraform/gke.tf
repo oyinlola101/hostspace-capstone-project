@@ -34,6 +34,20 @@ resource "google_container_cluster" "primary" {
 
   network    = google_compute_network.vpc.name
   subnetwork = google_compute_subnetwork.subnet.name
+
+  cluster_autoscaling {
+    enabled = true
+
+    # Configure resource limits for Cluster Autoscaler
+    resource_limits {
+      resource_type = "cpu"
+      maximum       = 8 # Maximum number of CPUs in the cluster
+    }
+    resource_limits {
+      resource_type = "memory"
+      maximum       = 32 # Maximum memory (in GB) in the cluster
+    }
+  }
 }
 
 # Separately Managed Node Pool
@@ -45,6 +59,10 @@ resource "google_container_node_pool" "primary_nodes" {
   version    = data.google_container_engine_versions.gke_version.release_channel_latest_version["STABLE"]
   node_count = var.gke_num_nodes
 
+  autoscaling {
+    min_node_count = 1 # Minimum number of nodes
+    max_node_count = 5 # Maximum number of nodes
+  }
   node_config {
     oauth_scopes = [
       "https://www.googleapis.com/auth/logging.write",
