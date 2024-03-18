@@ -7,10 +7,16 @@ terraform {
       source  = "hashicorp/google"
       version = "4.74.0"
     }
-    helm = {
+     helm = {
       source = "hashicorp/helm"
       version = "2.12.1"
     }
+  }
+  backend "gcs" {
+    bucket  = "ter-bucket"
+    prefix  = "terraform/state"
+    credentials = "C:/Users/oyin/Desktop/practice/service.json"
+
   }
 
   required_version = ">= 0.14"
