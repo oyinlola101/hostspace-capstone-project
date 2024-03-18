@@ -1,0 +1,1 @@
+# Output the Sealed Secrets public key
