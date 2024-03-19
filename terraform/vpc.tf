@@ -31,15 +31,4 @@ resource "google_compute_subnetwork" "subnet" {
   network       = google_compute_network.vpc.name
   ip_cidr_range = "10.10.0.0/24"
 }
-# Firewall rule for NodePort
-resource "google_compute_firewall" "nodeport" {
-  name    = "allow-nodeport"
-  network = google_compute_network.vpc.name
 
-  allow {
-    protocol = "tcp"
-    ports    = ["30000-32767"] # NodePort range
-  }
-
-  source_ranges = ["0.0.0.0/0"] # Allow traffic from any source (you may want to restrict this)
-}
