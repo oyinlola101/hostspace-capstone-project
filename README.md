@@ -9,3 +9,4 @@ gcloud compute firewall-rules create allow-nodeport \
     --allow tcp:30000-32767 \
     --target-tags gke-node
 
+kubectl get secret --namespace monitoring loki-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
