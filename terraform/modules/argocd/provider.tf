@@ -40,4 +40,17 @@ resource "helm_release" "argo" {
     name  = "server.service.type"
     value = "LoadBalancer"
   }
+  
+  set {
+    name  = "controller.metrics.enabled"
+    value = true
+  }
+  set {
+    name  = "server.metrics.enabled"
+    value = true
+  }
+  set {
+    name  = "dex.metrics.enabled"
+    value = true
+  }
 }
