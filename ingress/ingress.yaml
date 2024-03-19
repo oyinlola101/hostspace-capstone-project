@@ -17,24 +17,24 @@ spec:
       paths:
       - backend:
           service:
-            name: service-a
+            name: my-chat-app-service
             port:
               number: 80
-        path: /fine
+        path: /chat
         pathType: Prefix
       - backend:
           service:
-            name: service-b
+            name: my-stack-grafana
             port:
               number: 80
-        path: /ugly
+        path: /monitor
         pathType: Prefix
       - backend:
           service:
-            name: service-b
+            name: argocd-server
             port:
               number: 80
-        path: /ugly
+        path: /argocd
         pathType: Prefix
       - backend:
           service:
