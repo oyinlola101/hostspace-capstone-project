@@ -24,7 +24,7 @@ spec:
         pathType: Prefix
       - backend:
           service:
-            name: my-stack-grafana
+            name: my-loki-stack-grafana
             port:
               number: 80
         path: /monitor
@@ -38,8 +38,8 @@ spec:
         pathType: Prefix
       - backend:
           service:
-            name: service-b
+            name: my-prometheus-server
             port:
               number: 80
-        path: /ugly
+        path: /prom
         pathType: Prefix
