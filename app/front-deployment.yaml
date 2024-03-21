@@ -17,6 +17,10 @@ spec:
         image: oyinlola101/my-app:v1
         ports:
         - containerPort: 80
+        envFrom:
+        - secretRef:
+            name: sealed-secret
+        
 
 ---
 apiVersion: v1
