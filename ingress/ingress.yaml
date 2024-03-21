@@ -39,7 +39,9 @@ spec:
   - host: monitor.oyintest.com
     http:
       paths:
-      - backend:
+      - pathType: Prefix
+        path: "/"
+        backend:
           service:
             name: my-loki-stack-grafana
             port:
