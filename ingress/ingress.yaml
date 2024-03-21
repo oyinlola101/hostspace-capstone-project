@@ -12,7 +12,7 @@ spec:
  #   secretName: yours-tls
 
   rules:
-  - host: yours.com
+  - host: app.oyintest.com
     http:
       paths:
       - backend:
@@ -24,18 +24,11 @@ spec:
         pathType: Prefix
       - backend:
           service:
-            name: my-loki-stack-grafana
-            port:
-              number: 80
-        path: /monitor
-        pathType: Prefix
-      - backend:
-          service:
             name: argocd-server
             port:
               number: 80
         path: /argocd
-        pathType: Prefix
+        pathType: Prefix  
       - backend:
           service:
             name: my-prometheus-server
@@ -43,3 +36,15 @@ spec:
               number: 80
         path: /prom
         pathType: Prefix
+  - host: monitor.oyintest.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: my-loki-stack-grafana
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+      
+      
