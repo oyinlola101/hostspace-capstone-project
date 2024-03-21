@@ -33,7 +33,7 @@ spec:
           service:
             name: my-prometheus-server
             port:
-              number: 80
+              number: 9090
         path: /prom
         pathType: Prefix
   - host: monitor.oyintest.com
@@ -45,7 +45,7 @@ spec:
           service:
             name: my-loki-stack-grafana
             port:
-              number: 80
+              number: 3000
         
       
       
