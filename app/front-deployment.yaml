@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: front-end
+  name: my-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: frontend
+      app: my-app
   template:
     metadata:
       labels:
-        app: frontend
+        app: my-app
     spec:
       containers:
       - name: my-container
-        image: oyinlola101/frontend:v1
+        image: oyinlola101/my-app:v1
         ports:
         - containerPort: 80
 
@@ -22,10 +22,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-frontend-service
+  name: my-my-app-service
 spec:
   selector:
-    app: frontend
+    app: my-app
   ports:
   - protocol: TCP
     port: 80
