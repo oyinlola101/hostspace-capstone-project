@@ -44,7 +44,6 @@ spec:
             name: my-loki-stack-grafana
             port:
               number: 80
-        path: /
-        pathType: Prefix
+        
       
       
