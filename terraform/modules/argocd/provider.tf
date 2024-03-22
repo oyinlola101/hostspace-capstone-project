@@ -53,4 +53,8 @@ resource "helm_release" "argo" {
     name  = "dex.metrics.enabled"
     value = true
   }
+  set{
+    name = "metrics.enabled"
+    value = true
+  }
 }
