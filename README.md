@@ -15,3 +15,7 @@ use namespace app for the app
 use namespace secret for sealed secrets
 use namespace cert-manager for cert mananger
 use namespace ingress for ingress controller
+
+kubectl get secret --namespace monitoring my-loki-stack-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+
+http://my-prometheus-server:80   the server url to input in grafana, loki data source is automatically added.
