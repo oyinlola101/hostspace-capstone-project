@@ -3,13 +3,14 @@ kind: Ingress
 metadata:
   name: demo1
   annotations:
-  # cert-manager.io/cluster-issuer: letsencrypt-nginx
+   cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
   ingressClassName: nginx
-  #tls:
- # - hosts:
- #   app.oyintest.com
- #   secretName: yours-tls
+  tls:
+   - hosts:
+     - app.oyintest.com
+     - monitor.oyintest.com
+     secretName: app-test-tls
 
   rules:
   - host: app.oyintest.com
