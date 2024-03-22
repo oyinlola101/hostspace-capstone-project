@@ -19,7 +19,7 @@ spec:
         - containerPort: 8080
         envFrom:
         - secretRef:
-            name: test-secret
+            name: app-secret
         
 
 ---
