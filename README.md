@@ -10,3 +10,8 @@ gcloud compute firewall-rules create allow-nodeport \
     --target-tags gke-node
 
 kubectl get secret --namespace monitoring loki-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+use namespace monitoring for any monitoring app
+use namespace app for the app
+use namespace secret for sealed secrets
+use namespace cert-manager for cert mananger
+use namespace ingress for ingress controller
