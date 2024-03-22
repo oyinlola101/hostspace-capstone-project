@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/instance: my-prometheus
     app.kubernetes.io/version: "v0.27.0"
     app.kubernetes.io/managed-by: Helm
-  namespace: default
+  namespace: monitoring
 automountServiceAccountToken: true
 ---
 # Source: prometheus/charts/kube-state-metrics/templates/serviceaccount.yaml
@@ -26,14 +26,14 @@ metadata:
     app.kubernetes.io/instance: my-prometheus
     app.kubernetes.io/version: "2.10.1"
   name: my-prometheus-kube-state-metrics
-  namespace: default
+  namespace: monitoring
 ---
 # Source: prometheus/charts/prometheus-node-exporter/templates/serviceaccount.yaml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: my-prometheus-prometheus-node-exporter
-  namespace: default
+  namespace: monitoring
   labels:
     helm.sh/chart: prometheus-node-exporter-4.30.3
     app.kubernetes.io/managed-by: Helm
@@ -54,7 +54,7 @@ metadata:
     app.kubernetes.io/version: "v1.7.0"
     app.kubernetes.io/managed-by: Helm
   name: my-prometheus-prometheus-pushgateway
-  namespace: default
+  namespace: monitoring
 automountServiceAccountToken: true
 ---
 # Source: prometheus/templates/serviceaccount.yaml
@@ -70,7 +70,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: prometheus
   name: my-prometheus-server
-  namespace: default
+  namespace: monitoring
   annotations:
     {}
 ---
@@ -85,16 +85,16 @@ metadata:
     app.kubernetes.io/instance: my-prometheus
     app.kubernetes.io/version: "v0.27.0"
     app.kubernetes.io/managed-by: Helm
-  namespace: default
+  namespace: monitoring
 data:
   alertmanager.yml: |
     global: {}
     receivers:
-    - name: default-receiver
+    - name: monitoring-receiver
     route:
       group_interval: 5m
       group_wait: 10s
-      receiver: default-receiver
+      receiver: monitoring-receiver
       repeat_interval: 3h
     templates:
     - /etc/alertmanager/*.tmpl
@@ -112,7 +112,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: prometheus
   name: my-prometheus-server
-  namespace: default
+  namespace: monitoring
 data:
   allow-snippet-annotations: "false"
   alerting_rules.yml: |
@@ -140,7 +140,7 @@ data:
       - role: endpoints
       relabel_configs:
       - action: keep
-        regex: default;kubernetes;https
+        regex: monitoring;kubernetes;https
         source_labels:
         - __meta_kubernetes_namespace
         - __meta_kubernetes_service_name
@@ -156,7 +156,7 @@ data:
       relabel_configs:
       - action: labelmap
         regex: __meta_kubernetes_node_label_(.+)
-      - replacement: kubernetes.default.svc:443
+      - replacement: kubernetes.monitoring.svc:443
         target_label: __address__
       - regex: (.+)
         replacement: /api/v1/nodes/$1/proxy/metrics
@@ -174,7 +174,7 @@ data:
       relabel_configs:
       - action: labelmap
         regex: __meta_kubernetes_node_label_(.+)
-      - replacement: kubernetes.default.svc:443
+      - replacement: kubernetes.monitoring.svc:443
         target_label: __address__
       - regex: (.+)
         replacement: /api/v1/nodes/$1/proxy/metrics/cadvisor
@@ -438,7 +438,7 @@ data:
         bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
         relabel_configs:
         - source_labels: [__meta_kubernetes_namespace]
-          regex: default
+          regex: monitoring
           action: keep
         - source_labels: [__meta_kubernetes_pod_label_app_kubernetes_io_instance]
           regex: my-prometheus
@@ -467,7 +467,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: prometheus
   name: my-prometheus-server
-  namespace: default
+  namespace: monitoring
 spec:
   accessModes:
     - ReadWriteOnce
@@ -702,7 +702,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: my-prometheus-kube-state-metrics
-  namespace: default
+  namespace: monitoring
 ---
 # Source: prometheus/templates/clusterrolebinding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -720,7 +720,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: my-prometheus-server
-    namespace: default
+    namespace: monitoring
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -737,7 +737,7 @@ metadata:
     app.kubernetes.io/instance: my-prometheus
     app.kubernetes.io/version: "v0.27.0"
     app.kubernetes.io/managed-by: Helm
-  namespace: default
+  namespace: monitoring
 spec:
   type: ClusterIP
   ports:
@@ -760,7 +760,7 @@ metadata:
     app.kubernetes.io/instance: my-prometheus
     app.kubernetes.io/version: "v0.27.0"
     app.kubernetes.io/managed-by: Helm
-  namespace: default
+  namespace: monitoring
 spec:
   clusterIP: None
   ports:
@@ -777,7 +777,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: my-prometheus-kube-state-metrics
-  namespace: default
+  namespace: monitoring
   labels:    
     helm.sh/chart: kube-state-metrics-5.16.4
     app.kubernetes.io/managed-by: Helm
@@ -805,7 +805,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: my-prometheus-prometheus-node-exporter
-  namespace: default
+  namespace: monitoring
   labels:
     helm.sh/chart: prometheus-node-exporter-4.30.3
     app.kubernetes.io/managed-by: Helm
@@ -840,7 +840,7 @@ metadata:
     app.kubernetes.io/version: "v1.7.0"
     app.kubernetes.io/managed-by: Helm
   name: my-prometheus-prometheus-pushgateway
-  namespace: default
+  namespace: monitoring
 spec:
   type: ClusterIP
   ports:
@@ -865,7 +865,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: prometheus
   name: my-prometheus-server
-  namespace: default
+  namespace: monitoring
 spec:
   ports:
     - name: http
@@ -884,7 +884,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: my-prometheus-prometheus-node-exporter
-  namespace: default
+  namespace: monitoring
   labels:
     helm.sh/chart: prometheus-node-exporter-4.30.3
     app.kubernetes.io/managed-by: Helm
@@ -999,7 +999,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-prometheus-kube-state-metrics
-  namespace: default
+  namespace: monitoring
   labels:    
     helm.sh/chart: kube-state-metrics-5.16.4
     app.kubernetes.io/managed-by: Helm
@@ -1036,7 +1036,7 @@ spec:
         runAsNonRoot: true
         runAsUser: 65534
         seccompProfile:
-          type: RuntimeDefault
+          type: Runtimemonitoring
       containers:
       - name: kube-state-metrics
         args:
@@ -1087,7 +1087,7 @@ metadata:
     app.kubernetes.io/version: "v1.7.0"
     app.kubernetes.io/managed-by: Helm
   name: my-prometheus-prometheus-pushgateway
-  namespace: default
+  namespace: monitoring
 spec:
   replicas: 1
   strategy:
@@ -1152,7 +1152,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: prometheus
   name: my-prometheus-server
-  namespace: default
+  namespace: monitoring
 spec:
   selector:
     matchLabels:
@@ -1253,7 +1253,7 @@ metadata:
     app.kubernetes.io/instance: my-prometheus
     app.kubernetes.io/version: "v0.27.0"
     app.kubernetes.io/managed-by: Helm
-  namespace: default
+  namespace: monitoring
 spec:
   replicas: 1
   minReadySeconds: 0

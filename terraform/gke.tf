@@ -32,7 +32,8 @@ resource "google_container_cluster" "primary" {
   remove_default_node_pool = true
   initial_node_count       = 1
 
-  network    = "default"
+  network    = google_compute_network.vpc.name
+  subnetwork = google_compute_subnetwork.subnet.name
   
 
   cluster_autoscaling {
@@ -61,7 +62,7 @@ resource "google_container_node_pool" "primary_nodes" {
 
   autoscaling {
     min_node_count = 1 # Minimum number of nodes
-    max_node_count = 5 # Maximum number of nodes
+    max_node_count = 4 # Maximum number of nodes
   }
   node_config {
     oauth_scopes = [
