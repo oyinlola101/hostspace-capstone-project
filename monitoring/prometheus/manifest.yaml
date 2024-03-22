@@ -12,7 +12,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: prometheus
   name: my-prometheus-server
-  namespace: default
+  namespace: monitoring
   annotations:
     {}
 ---
@@ -29,7 +29,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: prometheus
   name: my-prometheus-server
-  namespace: default
+  namespace: monitoring
 data:
   allow-snippet-annotations: "false"
   alerting_rules.yml: |
@@ -364,7 +364,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: prometheus
   name: my-prometheus-server
-  namespace: default
+  namespace: monitoring
 spec:
   accessModes:
     - ReadWriteOnce
@@ -440,7 +440,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: my-prometheus-server
-    namespace: default
+    namespace: monitoring
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -459,7 +459,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: prometheus
   name: my-prometheus-server
-  namespace: default
+  namespace: monitoring
 spec:
   ports:
     - name: http
@@ -486,7 +486,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: prometheus
   name: my-prometheus-server
-  namespace: default
+  namespace: monitoring
 spec:
   selector:
     matchLabels:
