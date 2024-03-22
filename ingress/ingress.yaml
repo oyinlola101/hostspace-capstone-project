@@ -17,7 +17,7 @@ spec:
       paths:
       - backend:
           service:
-            name: my-chat-app-service
+            name: my-app-service
             port:
               number: 80
         path: /chat
@@ -45,7 +45,7 @@ spec:
           service:
             name: my-loki-stack-grafana
             port:
-              number: 3000
+              number: 80
         
       
       
