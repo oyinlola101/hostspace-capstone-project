@@ -21,3 +21,4 @@ kubectl get secret --namespace monitoring my-loki-stack-grafana -o jsonpath="{.d
 http://my-prometheus-server:80   the server url to input in grafana, loki data source is automatically added.
 
 kubectl get secret argocd-initial-admin-secret --namespace argocd  -o jsonpath="{.data.password}" | base64 --decode ; echo
+kubectl apply -f https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.19.4/controller.yaml(in case crds for sealed secets arent installed)
