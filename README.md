@@ -22,3 +22,8 @@ http://my-prometheus-server:80   the server url to input in grafana, loki data s
 
 kubectl get secret argocd-initial-admin-secret --namespace argocd  -o jsonpath="{.data.password}" | base64 --decode ; echo
 kubectl apply -f https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.19.4/controller.yaml(in case crds for sealed secets arent installed)
+
+
+
+https://loom.com/share/folder/5b8072eb3bad4b079a5cb0bfb358c83e 
+this link contains a demo 
