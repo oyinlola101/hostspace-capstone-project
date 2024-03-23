@@ -26,4 +26,4 @@ kubectl apply -f https://github.com/bitnami-labs/sealed-secrets/releases/downloa
 
 
 https://loom.com/share/folder/5b8072eb3bad4b079a5cb0bfb358c83e 
-this link contains a demo 
+this link contains a demo.
