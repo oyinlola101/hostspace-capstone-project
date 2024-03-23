@@ -7,6 +7,7 @@ gcloud container clusters get-credentials $(terraform output -raw kubernetes_clu
 if you need to acees your services via nodeport
 gcloud compute firewall-rules create allow-nodeport \
     --allow tcp:30000-32767 \
+    --allow udp:30000-32767 \
     --target-tags gke-node
 
 kubectl get secret --namespace monitoring loki-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
