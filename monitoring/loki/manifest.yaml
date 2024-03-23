@@ -444,7 +444,7 @@ metadata:
     app.kubernetes.io/version: "10.3.3"
     app.kubernetes.io/managed-by: Helm
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - name: service
       port: 80

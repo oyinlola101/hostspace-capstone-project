@@ -471,7 +471,7 @@ spec:
     app.kubernetes.io/name: prometheus
     app.kubernetes.io/instance: my-prometheus
   sessionAffinity: None
-  type: "NodePort"
+  type: "LoadBalancer"
 ---
 # Source: prometheus/templates/deploy.yaml
 apiVersion: apps/v1
