@@ -19,3 +19,5 @@ use namespace ingress for ingress controller
 kubectl get secret --namespace monitoring my-loki-stack-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 
 http://my-prometheus-server:80   the server url to input in grafana, loki data source is automatically added.
+
+kubectl get secret argocd-initial-admin-secret --namespace argocd  -o jsonpath="{.data.password}" | base64 --decode ; echo
