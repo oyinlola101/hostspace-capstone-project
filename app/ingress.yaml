@@ -23,4 +23,14 @@ spec:
               number: 80
         path: /
         pathType: Prefix
+  - host: monitor.oyintest.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: argocd-server
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
       
