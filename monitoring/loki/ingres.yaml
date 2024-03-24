@@ -25,7 +25,7 @@ spec:
             port:
               number: 80
       - path: /prom
-        pathType: Prefix
+        pathType: Exact
         backend:
           service:
             name: my-prometheus-server
