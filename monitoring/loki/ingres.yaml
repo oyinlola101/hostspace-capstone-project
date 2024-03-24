@@ -24,7 +24,7 @@ spec:
             name: my-prometheus-server
             port:
               number: 80
-      - path: /prom
+      - path: /loki
         pathType: Prefix
         backend:
           service:
