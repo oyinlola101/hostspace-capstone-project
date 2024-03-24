@@ -7,8 +7,7 @@ metadata:
 spec:
   ingressClassName: nginx
   tls:
-   - hosts:
-     
+   - hosts: 
      - monitor.oyintest.com
      secretName: monitor-test-tls
 
