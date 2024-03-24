@@ -17,7 +17,7 @@ spec:
   - host: monitoring.oyintest.com
     http:
       paths:
-      - path: /prom
+      - path: /prom/
         pathType: Exact
         backend:
           service:
