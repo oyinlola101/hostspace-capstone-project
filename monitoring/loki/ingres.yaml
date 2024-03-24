@@ -12,7 +12,7 @@ spec:
   tls:
   - hosts:
     - monitoring.oyintest.com
-    secretName: mint-tls
+    secretName: mine-tls
   rules:
   - host: monitoring.oyintest.com
     http:
