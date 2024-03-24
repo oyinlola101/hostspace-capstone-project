@@ -10,7 +10,7 @@ gcloud compute firewall-rules create allow-nodeport \
     --allow udp:30000-32767 \
     --target-tags gke-node
 
-kubectl get secret --namespace monitoring loki-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+
 use namespace monitoring for any monitoring app
 use namespace app for the app
 use namespace secret for sealed secrets

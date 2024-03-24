@@ -20,7 +20,14 @@ spec:
             name: my-app-service
             port:
               number: 80
-        path: /
+        path: /app
+        pathType: Prefix
+      - backend:
+          service:
+            name: argocd-server
+            port:
+              number: 80
+        path: /argo
         pathType: Prefix
   
 
