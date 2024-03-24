@@ -24,3 +24,10 @@ spec:
             name: my-prometheus-server
             port:
               number: 80
+      - path: /prom
+        pathType: Prefix
+        backend:
+          service:
+            name: my-loki-stack-grafana
+            port:
+              number: 80
