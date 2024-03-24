@@ -9,7 +9,6 @@ spec:
   tls:
    - hosts:
      - app.oyintest.com
-     - monitor.oyintest.com
      secretName: app-test-tls
 
   rules:
@@ -23,5 +22,5 @@ spec:
               number: 80
         path: /
         pathType: Prefix
-        
+
       
