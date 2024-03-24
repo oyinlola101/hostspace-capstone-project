@@ -17,10 +17,10 @@ spec:
   - host: monitoring.oyintest.com
     http:
       paths:
-      - path: /prom/
-        pathType: Exact
+      - path: /
+        pathType: Prefix
         backend:
           service:
-            name: my-prometheus-server
+            name: my-loki-stack-grafana
             port:
               number: 80
