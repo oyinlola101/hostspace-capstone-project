@@ -18,7 +18,7 @@ spec:
     http:
       paths:
       - path: /prom
-        pathType: Prefix
+        pathType: Exact
         backend:
           service:
             name: my-prometheus-server
