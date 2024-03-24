@@ -11,16 +11,23 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - monitorer.oyintest.com
-    secretName: mince-tls
+    - monitored.oyintest.com
+    secretName: mind-tls
   rules:
-  - host: monitorer.oyintest.com
+  - host: monitored.oyintest.com
     http:
       paths:
-      - path: /
+      - path: /grafana
         pathType: Prefix
         backend:
           service:
             name: my-loki-stack-grafana
+            port:
+              number: 80
+      - path: /prom
+        pathType: Prefix
+        backend:
+          service:
+            name: my-prometheus-server
             port:
               number: 80
