@@ -11,7 +11,7 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - monitoring.oyintest.com
+    - monitorin.oyintest.com
     secretName: monitoring-tls
   rules:
   - host: monitoring.oyintest.com
