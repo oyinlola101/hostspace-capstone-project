@@ -11,10 +11,10 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - monitoring.oyintest.com
-    secretName: mine-tls
+    - monitorer.oyintest.com
+    secretName: mince-tls
   rules:
-  - host: monitoring.oyintest.com
+  - host: monitorer.oyintest.com
     http:
       paths:
       - path: /
